@@ -1,0 +1,30 @@
+INCLUDE(FindPkgConfig)
+PKG_CHECK_MODULES(PC_MEASUREMENTS measurements)
+
+FIND_PATH(
+    MEASUREMENTS_INCLUDE_DIRS
+    NAMES measurements/api.h
+    HINTS $ENV{MEASUREMENTS_DIR}/include
+        ${PC_MEASUREMENTS_INCLUDEDIR}
+    PATHS ${CMAKE_INSTALL_PREFIX}/include
+          /usr/local/include
+          /usr/include
+)
+
+FIND_LIBRARY(
+    MEASUREMENTS_LIBRARIES
+    NAMES gnuradio-measurements
+    HINTS $ENV{MEASUREMENTS_DIR}/lib
+        ${PC_MEASUREMENTS_LIBDIR}
+    PATHS ${CMAKE_INSTALL_PREFIX}/lib
+          ${CMAKE_INSTALL_PREFIX}/lib64
+          /usr/local/lib
+          /usr/local/lib64
+          /usr/lib
+          /usr/lib64
+)
+
+INCLUDE(FindPackageHandleStandardArgs)
+FIND_PACKAGE_HANDLE_STANDARD_ARGS(MEASUREMENTS DEFAULT_MSG MEASUREMENTS_LIBRARIES MEASUREMENTS_INCLUDE_DIRS)
+MARK_AS_ADVANCED(MEASUREMENTS_LIBRARIES MEASUREMENTS_INCLUDE_DIRS)
+

@@ -1,0 +1,9 @@
+*~
+*.pyc
+*.pyo
+build/
+.settings/
+.project
+.cproject
+.pyproject
+.pydevproject

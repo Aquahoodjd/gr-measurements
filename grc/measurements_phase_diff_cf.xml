@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<block>
+  <name>Phase difference (zero-crossing)</name>
+  <key>measurements_phase_diff_cf</key>
+  <category>[measurements]</category>
+  <import>import measurements</import>
+  <make>measurements.phase_diff_cf($samp_rate)</make>
+
+  <param>
+    <name>Sampling rate</name>
+    <key>samp_rate</key>
+    <value>samp_rate</value>
+    <type>real</type>
+  </param>
+
+
+  <sink>
+    <name>in0</name>
+    <type>complex</type>
+  </sink>
+  
+  <sink>
+    <name>in1</name>
+    <type>complex</type>
+  </sink>
+  
+  <sink>
+    <name>reset</name>
+    <type>message</type>
+    <optional>1</optional>
+  </sink>
+
+  <source>
+    <name>out</name>
+    <type>float</type>
+  </source>
+</block>
