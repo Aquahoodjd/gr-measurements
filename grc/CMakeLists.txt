@@ -18,5 +18,6 @@
 # Boston, MA 02110-1301, USA.
 
 install(FILES
-    measurements_phase_diff_cf.xml DESTINATION share/gnuradio/grc/blocks
+    measurements_phase_diff_cf.xml
+    measurements_frequency_sweep_source_m.xml DESTINATION share/gnuradio/grc/blocks
 )

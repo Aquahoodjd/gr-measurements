@@ -27,6 +27,7 @@ link_directories(${Boost_LIBRARY_DIRS})
 
 list(APPEND measurements_sources
     phase_diff_cf_impl.cc
+    frequency_sweep_source_m_impl.cc
 )
 
 set(measurements_sources "${measurements_sources}" PARENT_SCOPE)

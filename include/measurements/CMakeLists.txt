@@ -22,5 +22,6 @@
 ########################################################################
 install(FILES
     api.h
-    phase_diff_cf.h DESTINATION include/measurements
+    phase_diff_cf.h
+    frequency_sweep_source_m.h DESTINATION include/measurements
 )
