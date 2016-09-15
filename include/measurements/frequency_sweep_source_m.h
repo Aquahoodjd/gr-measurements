@@ -52,7 +52,8 @@ namespace gr
       static sptr
       make (double start_freq = 10, double stop_freq = 1e6,
 	    size_t duartion_ms = 1000,
-	    int step_method = 0);
+	    int step_method = 0,
+	    size_t n_steps = 100);
     };
 
   } // namespace measurements

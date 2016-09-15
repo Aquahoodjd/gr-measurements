@@ -1,38 +1,71 @@
 <?xml version="1.0"?>
 <block>
-  <name>frequency_sweep_source_m</name>
+  <name>Frequency Sweep Message Source</name>
   <key>measurements_frequency_sweep_source_m</key>
   <category>[measurements]</category>
   <import>import measurements</import>
-  <make>measurements.frequency_sweep_source_m($start_freq, $stop_freq, $step_method)</make>
-  <!-- Make one 'param' node for every Parameter you want settable from the GUI.
-       Sub-nodes:
-       * name
-       * key (makes the value accessible as $keyname, e.g. in the make node)
-       * type -->
+  <make>measurements.frequency_sweep_source_m($start_freq, $stop_freq, $duration_ms, $step_method, $n_steps)</make>
+
   <param>
-    <name>...</name>
-    <key>...</key>
-    <type>...</type>
+    <name>Start Frequency</name>
+    <key>start_freq</key>
+    <value>100</value>
+    <type>real</type>
   </param>
 
-  <!-- Make one 'sink' node per input. Sub-nodes:
-       * name (an identifier for the GUI)
-       * type
-       * vlen
-       * optional (set to 1 for optional inputs) -->
+  <param>
+    <name>Stop Frequency</name>
+    <key>stop_freq</key>
+    <value>10e6</value>
+    <type>real</type>
+  </param>
+  
+  <param>
+    <name>Step Duration</name>
+    <key>duration_ms</key>
+    <value>1000</value>
+    <type>int</type>
+  </param>
+  
+  <param>
+    <name>Step Method</name>
+    <key>step_method</key>
+    <value>0</value>
+    <type>enum</type>
+    <option>
+      <name>Linear</name>
+      <key>0</key>
+    </option>
+    <option>
+      <name>Logarithmic</name>
+      <key>1</key>
+    </option>
+    <option>
+      <name>Exponential</name>
+      <key>2</key>
+    </option>
+  </param>
+  
+  <param>
+    <name>Steps</name>
+    <key>n_steps</key>
+    <value>100</value>
+    <type>int</type>
+  </param>
+
   <sink>
-    <name>in</name>
-    <type><!-- e.g. int, float, complex, byte, short, xxx_vector, ...--></type>
+    <name>start</name>
+    <type>message</type>
   </sink>
 
-  <!-- Make one 'source' node per output. Sub-nodes:
-       * name (an identifier for the GUI)
-       * type
-       * vlen
-       * optional (set to 1 for optional inputs) -->
   <source>
-    <name>out</name>
-    <type><!-- e.g. int, float, complex, byte, short, xxx_vector, ...--></type>
+    <name>freq</name>
+    <type>message</type>
+  </source>
+  
+  <source>
+    <name>trigger</name>
+    <type>message</type>
+    <optional>1</optional>
   </source>
 </block>

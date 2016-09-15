@@ -43,16 +43,26 @@ namespace gr
       const double d_stop_freq;
       const size_t d_duration_ms;
       const step_method_t d_step_method;
+      const size_t d_n_steps;
       bool d_running;
+      bool d_start;
       boost::shared_ptr<boost::thread> d_thread;
+      boost::mutex d_mutex;
+      boost::condition_variable d_cv;
 
       void
-      run ();
+      start_msg_handler(pmt::pmt_t msg);
+      void
+      run_linear ();
+      void
+      run_log ();
+      void
+      run_exp ();
 
     public:
       frequency_sweep_source_m_impl (double start_freq, double stop_freq,
 				     size_t duartion_ms,
-				     int step_method);
+				     int step_method, size_t n_steps);
       ~frequency_sweep_source_m_impl ();
     };
 
